@@ -13,8 +13,9 @@
         }
 
         body {
-            background: radial-gradient(circle at center, #11093c 0%, #060414 100%);
-            color: #ffffff;
+            /* Arrière-plan premium, très léger et lumineux */
+            background: linear-gradient(135deg, #f9fafe 0%, #f1f4ff 100%);
+            color: #120b30;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -33,15 +34,11 @@
             align-items: center;
         }
 
-        /* Conteneur blanc premium pour intégrer superbement votre logo */
-        .logo-card {
-            background: #ffffff;
-            padding: 15px 25px;
-            border-radius: 18px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 158, 206, 0.25);
-            margin-bottom: 20px;
-            max-width: 320px;
+        /* Conteneur de logo épuré sans boîte */
+        .logo-container {
             width: 100%;
+            max-width: 280px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -54,73 +51,72 @@
         }
 
         .subtitle {
-            color: #ff9ece; /* Votre Rose */
+            color: #2000ee; /* Votre Bleu Maneki */
             font-size: 0.95rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 15px;
-            text-shadow: 0 0 10px rgba(255, 158, 206, 0.3);
+            margin-bottom: 25px;
         }
 
-        /* Nouveau conteneur élargi pour éviter que l'aiguille ne soit coupée */
+        /* Structure de la roue garantie 100% centrée */
         .wheel-container {
             position: relative;
-            width: 375px; /* Largeur augmentée pour accueillir l'aiguille à l'extérieur */
+            width: 330px; /* Largeur exacte de la roue pour un centrage parfait */
             height: 330px;
-            margin: 10px auto 35px auto;
+            margin: 0 auto 35px auto;
             display: flex;
             align-items: center;
-            justify-content: flex-start; /* Aligne la roue à gauche */
+            justify-content: center;
         }
 
-        /* L'aiguille à l'extérieur, placée parfaitement à DROITE de la roue */
+        /* L'aiguille extérieure positionnée sur le flanc droit */
         .pointer-right {
             position: absolute;
-            right: 0;
+            left: 338px; /* Positionnée juste après les 330px de la roue */
             top: 50%;
             transform: translateY(-50%);
             width: 0;
             height: 0;
-            /* Triangle moderne pointant vers la GAUCHE */
-            border-top: 15px solid transparent;
-            border-bottom: 15px solid transparent;
-            border-right: 25px solid #ff9ece; /* Votre Rose */
+            /* Triangle pointant vers la GAUCHE */
+            border-top: 14px solid transparent;
+            border-bottom: 14px solid transparent;
+            border-right: 22px solid #ff66b2; /* Rose vif pour un contraste parfait sur fond clair */
             z-index: 15;
-            filter: drop-shadow(-4px 0px 8px rgba(255, 158, 206, 0.6));
+            filter: drop-shadow(2px 3px 6px rgba(0, 0, 0, 0.15));
         }
 
         canvas {
             width: 330px;
             height: 330px;
             border-radius: 50%;
-            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.05), 
-                        0 0 0 12px #ff9ece, 
-                        0 15px 50px rgba(32, 0, 238, 0.4);
+            box-shadow: 0 10px 35px rgba(32, 0, 238, 0.12), 
+                        0 0 0 10px #ff9ece; /* Bordure Rose signature */
             transition: transform 5s cubic-bezier(0.1, 0.8, 0.1, 1);
             background: #14112e;
         }
 
-        /* Bouton de spin moderne et épuré */
+        /* Bouton moderne Bleu Maneki */
         .spin-btn {
-            background: linear-gradient(135deg, #2000ee 0%, #1500aa 100%);
-            border: 2px solid #ff9ece;
+            background: #2000ee;
+            border: none;
             color: #ffffff;
             padding: 16px 50px;
             font-size: 1.15rem;
             font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(32, 0, 238, 0.5);
+            box-shadow: 0 8px 25px rgba(32, 0, 238, 0.25);
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
         .spin-btn:hover {
+            background: #ff9ece; /* Devient rose au survol */
+            color: #120b30;
             transform: translateY(-2px);
-            box-shadow: 0 10px 30px rgba(255, 158, 206, 0.4);
-            border-color: #ffffff;
+            box-shadow: 0 10px 25px rgba(255, 158, 206, 0.4);
         }
 
         .spin-btn:active {
@@ -128,23 +124,22 @@
         }
 
         .spin-btn:disabled {
-            background: #1f1d2e;
-            color: #555464;
-            border-color: #312f45;
+            background: #dcdbe7;
+            color: #9694a8;
             box-shadow: none;
             cursor: not-allowed;
         }
 
-        /* Pop-up moderne avec effet Glassmorphisme */
+        /* Pop-up épurée pour environnement lumineux */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(6, 4, 20, 0.85);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(18, 11, 48, 0.4);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -161,14 +156,13 @@
         }
 
         .modal {
-            background: rgba(20, 17, 46, 0.95);
-            border: 1px solid rgba(255, 158, 206, 0.3);
+            background: #ffffff;
             padding: 35px 25px;
             border-radius: 24px;
             text-align: center;
             max-width: 390px;
             width: 100%;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(32, 0, 238, 0.2);
+            box-shadow: 0 20px 50px rgba(18, 11, 48, 0.15);
             transform: translateY(20px);
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -179,14 +173,14 @@
 
         .modal h2 {
             font-size: 1.8rem;
-            color: #ff9ece;
+            color: #2000ee; /* Bleu */
             margin-bottom: 12px;
             font-weight: 800;
             letter-spacing: 1px;
         }
 
         .modal p {
-            color: #d1cfe2;
+            color: #4b4863;
             font-size: 0.98rem;
             line-height: 1.6;
             margin-bottom: 25px;
@@ -194,8 +188,8 @@
 
         .modal-btn {
             display: inline-block;
-            background: #ff9ece;
-            color: #060414;
+            background: #2000ee;
+            color: #ffffff;
             border: none;
             padding: 16px 30px;
             font-size: 1.05rem;
@@ -203,7 +197,7 @@
             border-radius: 50px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(255, 158, 206, 0.3);
+            box-shadow: 0 6px 15px rgba(32, 0, 238, 0.25);
             width: 100%;
             transition: all 0.2s ease;
             text-transform: uppercase;
@@ -211,15 +205,15 @@
         }
 
         .modal-btn:hover {
-            background: #ffffff;
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
+            background: #ff9ece;
+            color: #120b30;
+            box-shadow: 0 8px 20px rgba(255, 158, 206, 0.3);
         }
 
-        /* Encadré esthétique pour le coupon */
+        /* Zone coupon sur fond doux */
         .voucher-box {
-            background: rgba(32, 0, 238, 0.2);
-            border: 2px dashed rgba(255, 158, 206, 0.5);
+            background: #f1f4ff;
+            border: 2px dashed #ff9ece;
             padding: 20px;
             border-radius: 16px;
             margin: 20px 0;
@@ -229,19 +223,18 @@
         .voucher-code {
             font-size: 1.9rem;
             font-weight: 900;
-            color: #ff9ece;
+            color: #2000ee;
             letter-spacing: 3px;
             margin: 8px 0;
-            text-shadow: 0 0 10px rgba(255, 158, 206, 0.2);
         }
 
         .warning-text {
             font-size: 0.85rem !important;
-            color: #ff6b6b !important;
+            color: #e63946 !important;
             margin-top: 20px;
             font-weight: 700;
             line-height: 1.5;
-            background: rgba(255, 107, 107, 0.1);
+            background: #fff0f3;
             padding: 12px;
             border-radius: 10px;
         }
@@ -250,16 +243,15 @@
 <body>
 
     <div class="container">
-        <!-- Zone Logo Premium -->
-        <div class="logo-card">
-            <!-- Tente de charger le nom exact de votre fichier d'origine, sinon utilise logo.jpg en fallback -->
+        <!-- Zone Logo flottant épuré -->
+        <div class="logo-container">
             <img class="brand-logo" src="MANEKI HORIZONTAL LOGO(1).jpg" alt="Le Château Maneki" onerror="this.src='logo.jpg'; this.onerror=function(){this.style.display='none'; document.getElementById('backup-title').style.display='block';}">
             <h1 id="backup-title" style="display:none; color:#2000ee; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px;">LE CHÂTEAU MANEKI</h1>
         </div>
         
         <p class="subtitle">Tournez la roue !</p>
 
-        <!-- Roue de jeu avec flèche à droite à l'extérieur -->
+        <!-- Roue de jeu parfaitement centrée avec pointeur externe à droite -->
         <div class="wheel-container">
             <canvas id="wheel" width="400" height="400"></canvas>
             <div class="pointer-right"></div>
@@ -271,20 +263,20 @@
     <!-- Pop-up d'Action -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal" id="modal-content">
-            <!-- Étape 1 : Lien vers l'avis -->
+            <!-- Étape 1 : Demande d'avis -->
             <div id="step-review">
                 <h2>🎉 EXCELLENT ! 🎉</h2>
-                <p>Vous avez gagné : <br><strong id="prize-text" style="color: #ff9ece; font-size: 1.35rem; display: block; margin-top: 8px;">[Prix]</strong></p>
+                <p>Vous avez gagné : <br><strong id="prize-text" style="color: #2000ee; font-size: 1.35rem; display: block; margin-top: 8px;">[Prix]</strong></p>
                 <p>Pour afficher votre coupon de réclamation, écrivez-nous un petit mot sympa sur Google via le bouton ci-dessous !</p>
                 <button class="modal-btn" onclick="redirectToReview()">Laisser un avis & Débloquer</button>
             </div>
 
-            <!-- Étape 2 : Coupon de récompense -->
+            <!-- Étape 2 : Code Promo -->
             <div id="step-voucher" style="display: none;">
                 <h2>🎟️ VOTRE CADEAU 🎟️</h2>
                 <p>La page des avis Google s'est ouverte dans un autre onglet.</p>
                 <div class="voucher-box" style="display: block;">
-                    <p style="margin-bottom: 5px; color:#a5a1c9; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Votre code cadeau :</p>
+                    <p style="margin-bottom: 5px; color:#6b6793; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Votre code cadeau :</p>
                     <div class="voucher-code" id="voucher-code-display">CODE</div>
                 </div>
                 <p class="warning-text">⚠️ IMPORTANT : Pour valider votre gain, vous devez montrer cet écran ET votre avis publié à votre serveur au moment de régler !</p>
@@ -305,7 +297,7 @@
             { name: "Un mocktail", code: "MNK-MOCKTAIL" }
         ];
 
-        // Palette esthétique Maneki
+        // Palette de couleurs de marque optimisée
         const colors = [
             "#2000ee", // Bleu Maneki
             "#ff9ece", // Rose Château
@@ -325,9 +317,7 @@
 
         function drawWheel() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             ctx.translate(200, 200);
-            // Pas de rotation initiale pour que la tranche 0 s'aligne naturellement sur l'aiguille à droite (3 heures)
 
             for (let i = 0; i < numSegments; i++) {
                 const angle = i * arcSize;
@@ -339,9 +329,7 @@
                 ctx.lineTo(0, 0);
                 ctx.fill();
 
-                // Style du texte
                 ctx.save();
-                // Choix de couleur de texte dynamique pour le contraste
                 if (colors[i % colors.length] === "#ff9ece" || colors[i % colors.length] === "#ffccd8") {
                     ctx.fillStyle = "#060414";
                 } else {
@@ -354,7 +342,6 @@
                 ctx.restore();
             }
             
-            // Hub central blanc minimaliste avec bordure rose
             ctx.beginPath();
             ctx.arc(0, 0, 20, 0, 2 * Math.PI);
             ctx.fillStyle = "#ffffff";
@@ -371,10 +358,7 @@
             const winningIndex = Math.floor(Math.random() * numSegments);
             selectedPrize = prizes[winningIndex];
 
-            // Nombre de tours de roue aléatoires (5 à 8 tours)
             const extraSpins = (Math.floor(Math.random() * 4) + 5) * 360;
-            
-            // Calcul de l'angle requis pour que la tranche gagnante finisse à 3h (position de l'aiguille de droite)
             const sliceCenterDegrees = (winningIndex * (360 / numSegments)) + (180 / numSegments);
             const targetDegrees = extraSpins + (360 - sliceCenterDegrees);
 
