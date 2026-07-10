@@ -33,21 +33,24 @@
             align-items: center;
         }
 
-        /* En-tête avec logo ultra-pro */
-        .brand-header {
+        /* Conteneur blanc premium pour intégrer superbement votre logo */
+        .logo-card {
+            background: #ffffff;
+            padding: 15px 25px;
+            border-radius: 18px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 20px rgba(255, 158, 206, 0.25);
+            margin-bottom: 20px;
+            max-width: 320px;
             width: 100%;
-            max-width: 280px;
-            margin-bottom: 25px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            justify-content: center;
         }
 
         .brand-logo {
             width: 100%;
             height: auto;
             object-fit: contain;
-            filter: drop-shadow(0px 4px 12px rgba(255, 158, 206, 0.25));
         }
 
         .subtitle {
@@ -56,39 +59,40 @@
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-top: 5px;
+            margin-bottom: 15px;
             text-shadow: 0 0 10px rgba(255, 158, 206, 0.3);
         }
 
-        /* Structure moderne de la roue avec pointeur à droite */
+        /* Nouveau conteneur élargi pour éviter que l'aiguille ne soit coupée */
         .wheel-container {
             position: relative;
-            width: 330px;
+            width: 375px; /* Largeur augmentée pour accueillir l'aiguille à l'extérieur */
             height: 330px;
             margin: 10px auto 35px auto;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start; /* Aligne la roue à gauche */
         }
 
-        /* Le pointeur moderne positionné à DROITE */
+        /* L'aiguille à l'extérieur, placée parfaitement à DROITE de la roue */
         .pointer-right {
             position: absolute;
-            right: -15px;
+            right: 0;
             top: 50%;
-            transform: translateY(-50%) rotate(-90deg); /* Oriente la pointe vers la gauche */
+            transform: translateY(-50%);
             width: 0;
             height: 0;
-            border-left: 14px solid transparent;
-            border-right: 14px solid transparent;
-            border-top: 28px solid #ff9ece; /* Votre Rose */
+            /* Triangle moderne pointant vers la GAUCHE */
+            border-top: 15px solid transparent;
+            border-bottom: 15px solid transparent;
+            border-right: 25px solid #ff9ece; /* Votre Rose */
             z-index: 15;
             filter: drop-shadow(-4px 0px 8px rgba(255, 158, 206, 0.6));
         }
 
         canvas {
-            width: 100%;
-            height: 100%;
+            width: 330px;
+            height: 330px;
             border-radius: 50%;
             box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.05), 
                         0 0 0 12px #ff9ece, 
@@ -131,7 +135,7 @@
             cursor: not-allowed;
         }
 
-        /* Pop-up moderne avec effet Glassmorphisme (flou d'arrière-plan) */
+        /* Pop-up moderne avec effet Glassmorphisme */
         .modal-overlay {
             position: fixed;
             top: 0;
@@ -246,23 +250,25 @@
 <body>
 
     <div class="container">
-        <!-- Zone Logo -->
-        <div class="brand-header">
-            <img class="brand-logo" src="logo.jpg" alt="Le Château Maneki" onerror="this.style.display='none'; document.getElementById('backup-title').style.display='block';">
-            <h1 id="backup-title" style="display:none; color:#ff9ece; font-size: 1.8rem; font-weight: 800; letter-spacing: 1px;">LE CHÂTEAU MANEKI</h1>
-            <p class="subtitle">Tournez la roue !</p>
+        <!-- Zone Logo Premium -->
+        <div class="logo-card">
+            <!-- Tente de charger le nom exact de votre fichier d'origine, sinon utilise logo.jpg en fallback -->
+            <img class="brand-logo" src="MANEKI HORIZONTAL LOGO(1).jpg" alt="Le Château Maneki" onerror="this.src='logo.jpg'; this.onerror=function(){this.style.display='none'; document.getElementById('backup-title').style.display='block';}">
+            <h1 id="backup-title" style="display:none; color:#2000ee; font-size: 1.5rem; font-weight: 900; letter-spacing: 1px;">LE CHÂTEAU MANEKI</h1>
         </div>
+        
+        <p class="subtitle">Tournez la roue !</p>
 
-        <!-- Roue de jeu avec flèche à droite -->
+        <!-- Roue de jeu avec flèche à droite à l'extérieur -->
         <div class="wheel-container">
-            <div class="pointer-right"></div>
             <canvas id="wheel" width="400" height="400"></canvas>
+            <div class="pointer-right"></div>
         </div>
 
         <button class="spin-btn" id="spin-button" onclick="spinWheel()">Lancer le Spin</button>
     </div>
 
-    <!-- Fenêtre Pop-up d'Action -->
+    <!-- Pop-up d'Action -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal" id="modal-content">
             <!-- Étape 1 : Lien vers l'avis -->
@@ -321,7 +327,7 @@
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
             ctx.translate(200, 200);
-            ctx.rotate(-Math.PI / 2);
+            // Pas de rotation initiale pour que la tranche 0 s'aligne naturellement sur l'aiguille à droite (3 heures)
 
             for (let i = 0; i < numSegments; i++) {
                 const angle = i * arcSize;
@@ -335,7 +341,7 @@
 
                 // Style du texte
                 ctx.save();
-                // Assure un contraste parfait selon la clarté du fond
+                // Choix de couleur de texte dynamique pour le contraste
                 if (colors[i % colors.length] === "#ff9ece" || colors[i % colors.length] === "#ffccd8") {
                     ctx.fillStyle = "#060414";
                 } else {
@@ -348,7 +354,7 @@
                 ctx.restore();
             }
             
-            // Hub central épuré
+            // Hub central blanc minimaliste avec bordure rose
             ctx.beginPath();
             ctx.arc(0, 0, 20, 0, 2 * Math.PI);
             ctx.fillStyle = "#ffffff";
@@ -365,12 +371,12 @@
             const winningIndex = Math.floor(Math.random() * numSegments);
             selectedPrize = prizes[winningIndex];
 
-            // Nombre de tours complets (entre 5 et 8)
+            // Nombre de tours de roue aléatoires (5 à 8 tours)
             const extraSpins = (Math.floor(Math.random() * 4) + 5) * 360;
             
-            // Calcul de l'angle pour aligner la tranche gagnante avec le pointeur à DROITE (3 heures)
+            // Calcul de l'angle requis pour que la tranche gagnante finisse à 3h (position de l'aiguille de droite)
             const sliceCenterDegrees = (winningIndex * (360 / numSegments)) + (180 / numSegments);
-            const targetDegrees = extraSpins + ((450 - sliceCenterDegrees) % 360);
+            const targetDegrees = extraSpins + (360 - sliceCenterDegrees);
 
             canvas.style.transform = `rotate(${targetDegrees}deg)`;
 
