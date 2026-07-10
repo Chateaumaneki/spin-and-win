@@ -9,12 +9,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         }
 
         body {
-            /* Fond sombre et moderne pour faire ressortir le rose et le bleu électrique */
-            background: linear-gradient(135deg, #09061a 0%, #120b30 100%);
+            background: radial-gradient(circle at center, #11093c 0%, #060414 100%);
             color: #ffffff;
             display: flex;
             flex-direction: column;
@@ -29,105 +28,126 @@
             text-align: center;
             max-width: 450px;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        /* Style de l'image du logo */
+        /* En-tête avec logo ultra-pro */
+        .brand-header {
+            width: 100%;
+            max-width: 280px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
         .brand-logo {
-            max-width: 260px;
             width: 100%;
             height: auto;
-            margin: 0 auto 10px auto;
-            display: block;
+            object-fit: contain;
+            filter: drop-shadow(0px 4px 12px rgba(255, 158, 206, 0.25));
         }
 
-        p.subtitle {
+        .subtitle {
             color: #ff9ece; /* Votre Rose */
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 30px;
-            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: 2px;
             text-transform: uppercase;
+            margin-top: 5px;
+            text-shadow: 0 0 10px rgba(255, 158, 206, 0.3);
         }
 
-        /* Conteneur de la roue */
-        .wheel-wrapper {
+        /* Structure moderne de la roue avec pointeur à droite */
+        .wheel-container {
             position: relative;
-            width: 320px;
-            height: 320px;
-            margin: 0 auto 30px auto;
+            width: 330px;
+            height: 330px;
+            margin: 10px auto 35px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        /* Le pointeur relooké en Rose Château */
-        .pointer {
+        /* Le pointeur moderne positionné à DROITE */
+        .pointer-right {
             position: absolute;
-            top: -15px;
-            left: 50%;
-            transform: translateX(-50%);
+            right: -15px;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg); /* Oriente la pointe vers la gauche */
             width: 0;
             height: 0;
-            border-left: 15px solid transparent;
-            border-right: 15px solid transparent;
-            border-top: 30px solid #ff9ece; /* Votre Rose */
-            z-index: 10;
-            filter: drop-shadow(0px 4px 8px rgba(255, 158, 206, 0.4));
+            border-left: 14px solid transparent;
+            border-right: 14px solid transparent;
+            border-top: 28px solid #ff9ece; /* Votre Rose */
+            z-index: 15;
+            filter: drop-shadow(-4px 0px 8px rgba(255, 158, 206, 0.6));
         }
 
         canvas {
             width: 100%;
             height: 100%;
             border-radius: 50%;
-            box-shadow: 0 10px 40px rgba(32, 0, 238, 0.3), 0 0 0 8px #ff9ece; /* Lueur bleue et bordure rose */
+            box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.05), 
+                        0 0 0 12px #ff9ece, 
+                        0 15px 50px rgba(32, 0, 238, 0.4);
             transition: transform 5s cubic-bezier(0.1, 0.8, 0.1, 1);
+            background: #14112e;
         }
 
-        /* Bouton de spin aux couleurs de Maneki */
+        /* Bouton de spin moderne et épuré */
         .spin-btn {
-            background: linear-gradient(135deg, #2000ee 0%, #120088 100%); /* Votre Bleu */
-            border: 2px solid #ff9ece; /* Votre Rose */
+            background: linear-gradient(135deg, #2000ee 0%, #1500aa 100%);
+            border: 2px solid #ff9ece;
             color: #ffffff;
-            padding: 16px 45px;
-            font-size: 1.3rem;
-            font-weight: bold;
+            padding: 16px 50px;
+            font-size: 1.15rem;
+            font-weight: 800;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 8px 20px rgba(32, 0, 238, 0.4);
-            transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+            box-shadow: 0 8px 25px rgba(32, 0, 238, 0.5);
+            transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
         }
 
         .spin-btn:hover {
-            background: linear-gradient(135deg, #3010ff 0%, #2000ee 100%);
-            box-shadow: 0 8px 25px rgba(255, 158, 206, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 158, 206, 0.4);
+            border-color: #ffffff;
         }
 
         .spin-btn:active {
-            transform: scale(0.95);
+            transform: translateY(1px);
         }
 
         .spin-btn:disabled {
-            background: #2a2b36;
-            color: #666;
-            border-color: #555;
+            background: #1f1d2e;
+            color: #555464;
+            border-color: #312f45;
             box-shadow: none;
             cursor: not-allowed;
         }
 
-        /* Fenêtre Pop-up (Modal) */
+        /* Pop-up moderne avec effet Glassmorphisme (flou d'arrière-plan) */
         .modal-overlay {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(9, 6, 26, 0.9);
+            background: rgba(6, 4, 20, 0.85);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
             display: flex;
             align-items: center;
             justify-content: center;
             z-index: 100;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             padding: 20px;
         }
 
@@ -137,119 +157,131 @@
         }
 
         .modal {
-            background: #14112e;
-            border: 2px solid #ff9ece; /* Bordure Rose */
-            padding: 35px 24px;
-            border-radius: 20px;
+            background: rgba(20, 17, 46, 0.95);
+            border: 1px solid rgba(255, 158, 206, 0.3);
+            padding: 35px 25px;
+            border-radius: 24px;
             text-align: center;
-            max-width: 400px;
+            max-width: 390px;
             width: 100%;
-            box-shadow: 0 10px 50px rgba(32, 0, 238, 0.4);
-            transform: scale(0.8);
-            transition: transform 0.3s ease;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 40px rgba(32, 0, 238, 0.2);
+            transform: translateY(20px);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         .modal-overlay.active .modal {
-            transform: scale(1);
+            transform: translateY(0);
         }
 
         .modal h2 {
-            font-size: 2rem;
-            color: #ff9ece; /* Votre Rose */
-            margin-bottom: 15px;
+            font-size: 1.8rem;
+            color: #ff9ece;
+            margin-bottom: 12px;
+            font-weight: 800;
             letter-spacing: 1px;
         }
 
         .modal p {
-            color: #e0e0e0;
-            font-size: 1.05rem;
+            color: #d1cfe2;
+            font-size: 0.98rem;
             line-height: 1.6;
             margin-bottom: 25px;
         }
 
-        /* Bouton d'action vert pour la validation */
         .modal-btn {
             display: inline-block;
-            background: #ff9ece; /* Base Rose pour garder la charte */
-            color: #120b30;
+            background: #ff9ece;
+            color: #060414;
             border: none;
-            padding: 15px 28px;
-            font-size: 1.15rem;
-            font-weight: bold;
+            padding: 16px 30px;
+            font-size: 1.05rem;
+            font-weight: 800;
             border-radius: 50px;
             text-decoration: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(255, 158, 206, 0.4);
+            box-shadow: 0 8px 20px rgba(255, 158, 206, 0.3);
             width: 100%;
-            transition: background 0.2s, transform 0.2s;
+            transition: all 0.2s ease;
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .modal-btn:hover {
-            background: #ff7ebb;
+            background: #ffffff;
             transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(255, 255, 255, 0.2);
         }
 
-        /* Zone d'affichage du coupon */
+        /* Encadré esthétique pour le coupon */
         .voucher-box {
-            background: rgba(32, 0, 238, 0.15);
-            border: 2px dashed #ff9ece;
-            padding: 18px;
-            border-radius: 12px;
-            margin-top: 15px;
+            background: rgba(32, 0, 238, 0.2);
+            border: 2px dashed rgba(255, 158, 206, 0.5);
+            padding: 20px;
+            border-radius: 16px;
+            margin: 20px 0;
             display: none;
         }
 
         .voucher-code {
-            font-size: 1.8rem;
-            font-weight: bold;
+            font-size: 1.9rem;
+            font-weight: 900;
             color: #ff9ece;
-            letter-spacing: 2px;
-            margin: 10px 0;
+            letter-spacing: 3px;
+            margin: 8px 0;
+            text-shadow: 0 0 10px rgba(255, 158, 206, 0.2);
         }
 
         .warning-text {
             font-size: 0.85rem !important;
-            color: #ff5555 !important;
+            color: #ff6b6b !important;
             margin-top: 20px;
-            font-weight: bold;
-            line-height: 1.4;
+            font-weight: 700;
+            line-height: 1.5;
+            background: rgba(255, 107, 107, 0.1);
+            padding: 12px;
+            border-radius: 10px;
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <img class="brand-logo" src="logo.jpg" alt="Le Château Maneki" onerror="this.style.display='none'; document.getElementById('backup-title').style.display='block';">
-        <h1 id="backup-title" style="display:none; color:#ff9ece; margin-bottom: 10px;">Le Château Maneki</h1>
-        
-        <p class="subtitle">Tournez la roue !</p>
+        <!-- Zone Logo -->
+        <div class="brand-header">
+            <img class="brand-logo" src="logo.jpg" alt="Le Château Maneki" onerror="this.style.display='none'; document.getElementById('backup-title').style.display='block';">
+            <h1 id="backup-title" style="display:none; color:#ff9ece; font-size: 1.8rem; font-weight: 800; letter-spacing: 1px;">LE CHÂTEAU MANEKI</h1>
+            <p class="subtitle">Tournez la roue !</p>
+        </div>
 
-        <div class="wheel-wrapper">
-            <div class="pointer"></div>
+        <!-- Roue de jeu avec flèche à droite -->
+        <div class="wheel-container">
+            <div class="pointer-right"></div>
             <canvas id="wheel" width="400" height="400"></canvas>
         </div>
 
         <button class="spin-btn" id="spin-button" onclick="spinWheel()">Lancer le Spin</button>
     </div>
 
+    <!-- Fenêtre Pop-up d'Action -->
     <div class="modal-overlay" id="modal-overlay">
         <div class="modal" id="modal-content">
+            <!-- Étape 1 : Lien vers l'avis -->
             <div id="step-review">
-                <h2>🎉 GAGNÉ ! 🎉</h2>
-                <p>La roue s'est arrêtée sur : <br><strong id="prize-text" style="color: #ff9ece; font-size: 1.4rem;">[Prix]</strong> !</p>
-                <p>Pour débloquer votre coupon de prix, laissez-nous un avis rapide sur Google en cliquant sur le bouton rose ci-dessous.</p>
+                <h2>🎉 EXCELLENT ! 🎉</h2>
+                <p>Vous avez gagné : <br><strong id="prize-text" style="color: #ff9ece; font-size: 1.35rem; display: block; margin-top: 8px;">[Prix]</strong></p>
+                <p>Pour afficher votre coupon de réclamation, écrivez-nous un petit mot sympa sur Google via le bouton ci-dessous !</p>
                 <button class="modal-btn" onclick="redirectToReview()">Laisser un avis & Débloquer</button>
             </div>
 
+            <!-- Étape 2 : Coupon de récompense -->
             <div id="step-voucher" style="display: none;">
-                <h2>🎟️ VOTRE COUPON 🎟️</h2>
-                <p>L'onglet d'avis Google vient de s'ouvrir !</p>
+                <h2>🎟️ VOTRE CADEAU 🎟️</h2>
+                <p>La page des avis Google s'est ouverte dans un autre onglet.</p>
                 <div class="voucher-box" style="display: block;">
-                    <p style="margin-bottom:5px; color:#ccc; font-size: 0.9rem;">Présentez ce code à l'équipe :</p>
+                    <p style="margin-bottom: 5px; color:#a5a1c9; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">Votre code cadeau :</p>
                     <div class="voucher-code" id="voucher-code-display">CODE</div>
                 </div>
-                <p class="warning-text">⚠️ ATTENTION : Pour obtenir votre cadeau, vous devez montrer cet écran ET votre avis Google publié à votre serveur lors de l'addition !</p>
+                <p class="warning-text">⚠️ IMPORTANT : Pour valider votre gain, vous devez montrer cet écran ET votre avis publié à votre serveur au moment de régler !</p>
             </div>
         </div>
     </div>
@@ -258,7 +290,6 @@
         // --- CONFIGURATION ---
         const REVIEW_LINK = "https://g.page/r/CQxa2Hq5SoTzEBM/review";
         
-        // Liste exacte de vos 6 prix avec vos codes personnalisés
         const prizes = [
             { name: "Crème glacée du jour", code: "MNK-CREME" },
             { name: "Un drink matcha", code: "MNK-MATCHA" },
@@ -268,14 +299,14 @@
             { name: "Un mocktail", code: "MNK-MOCKTAIL" }
         ];
 
-        // Palette de couleurs alternée de votre marque (Bleu, Rose, Blanc, nuances)
+        // Palette esthétique Maneki
         const colors = [
-            "#2000ee", // Votre Bleu
-            "#ff9ece", // Votre Rose
-            "#140099", // Bleu foncé
-            "#ffccd8", // Rose très clair
-            "#3a1aff", // Bleu électrique vif
-            "#ff66b2"  // Rose foncé/fuchsia
+            "#2000ee", // Bleu Maneki
+            "#ff9ece", // Rose Château
+            "#0d007c", // Bleu profond
+            "#ffccd8", // Rose poudré
+            "#3212ff", // Bleu électrique vibrant
+            "#ff7ebb"  // Rose vif
         ];
         // ---------------------
 
@@ -286,7 +317,6 @@
         const arcSize = (2 * Math.PI) / numSegments;
         let selectedPrize = null;
 
-        // Dessiner la roue
         function drawWheel() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
@@ -303,46 +333,47 @@
                 ctx.lineTo(0, 0);
                 ctx.fill();
 
-                // Texte des prix sur la roue
+                // Style du texte
                 ctx.save();
-                // Si la tranche est rose clair ou blanc, on écrit en bleu foncé pour la lisibilité
+                // Assure un contraste parfait selon la clarté du fond
                 if (colors[i % colors.length] === "#ff9ece" || colors[i % colors.length] === "#ffccd8") {
-                    ctx.fillStyle = "#120b30";
+                    ctx.fillStyle = "#060414";
                 } else {
                     ctx.fillStyle = "#ffffff";
                 }
-                ctx.font = "bold 11px Arial";
+                ctx.font = "bold 11px sans-serif";
                 ctx.textAlign = "right";
                 ctx.rotate(angle + arcSize / 2);
                 ctx.fillText(prizes[i].name, 185, 4);
                 ctx.restore();
             }
             
-            // Rond central de la roue (blanc avec bordure rose)
+            // Hub central épuré
             ctx.beginPath();
-            ctx.arc(0, 0, 25, 0, 2 * Math.PI);
+            ctx.arc(0, 0, 20, 0, 2 * Math.PI);
             ctx.fillStyle = "#ffffff";
             ctx.fill();
-            ctx.lineWidth = 3;
+            ctx.lineWidth = 4;
             ctx.strokeStyle = "#ff9ece";
             ctx.stroke();
         }
         drawWheel();
 
-        // Lancer l'animation
         function spinWheel() {
             spinButton.disabled = true;
 
             const winningIndex = Math.floor(Math.random() * numSegments);
             selectedPrize = prizes[winningIndex];
 
+            // Nombre de tours complets (entre 5 et 8)
             const extraSpins = (Math.floor(Math.random() * 4) + 5) * 360;
+            
+            // Calcul de l'angle pour aligner la tranche gagnante avec le pointeur à DROITE (3 heures)
             const sliceCenterDegrees = (winningIndex * (360 / numSegments)) + (180 / numSegments);
-            const targetDegrees = extraSpins + (360 - sliceCenterDegrees);
+            const targetDegrees = extraSpins + ((450 - sliceCenterDegrees) % 360);
 
             canvas.style.transform = `rotate(${targetDegrees}deg)`;
 
-            // Attendre 5 secondes avant le pop-up
             setTimeout(() => {
                 showReviewModal();
             }, 5000);
